@@ -1,0 +1,160 @@
+FORMAT: 1A
+
+# SGA REST Api
+SGA REST Api gathers data from database and process it to be delivered to SGA Frontend
+
+Author: Alexandre Cabral Bedeschi
+
+## Authentication
+Basic Auth
+
+## Media Types
+Requests with a message-body are using plain JSON.
+
+## Error States
+The common [HTTP Response Status Codes](https://github.com/for-GET/know-your-http-well/blob/master/status-codes.md) are used.
+
+# Group SGA REST Api Documentation
+
+## Retrieve Documentation [/rest/api/doc]
+
+## Retrieve Documentation [GET]
+
++ Response 200
+
+# Group Options
+
+## Retrieve Options [/rest/api/options]
+Options for the "OptionsBox" component
+
++ Model (application/json)
+
+    Options for the "OptionsBox" component
+
+    + Headers
+
+
+    + Body
+
+            {
+                "audit": ["ABS","AUTHORITY","CUSTOMER","INTERNAL"],
+                "lastUpdate":"2019-10-04",
+                "admin":["SJK","EDE","TTE","ÉVORA","EGM","GPX","BOT","MLB","JAX","SUPPLIER","WAREHOUSE","MRO"],
+                "teams":["Quality - Auditoria da Qualidade"],
+                "year":[2019]
+            }
+
+### Retrieve All Options [GET]
++ Response 200
+
+    [Retrieve Options][]
+
+# Group Results
+
+## Retrieve Results [/rest/api/results]
+Results for the chart component
+
++ Request JSON Message
+
+    + Headers
+
+            Accept: application/json
+
+    + Body
+    
+            {
+                "audit": ["ABS","AUTHORITY","CUSTOMER","INTERNAL"],
+                "admin": ["SJK","EDE","TTE","ÉVORA","EGM","GPX","BOT","MLB","JAX","SUPPLIER","WAREHOUSE","MRO"],
+                "teams": ["Quality - Auditoria da Qualidade"],
+                "year": [2019]
+            }
+
++ Model (application/json)
+
+    Results for the chart component
+
+    + Headers
+
+
+    + Body
+
+            {
+                "Open": [0,1,2,10,2,0,0,1,0,2,10,0],
+                "In Progress":[0,11,4,10,6,3,0,3,0,2,13,1],
+                "Impeded":[2,5,2,13,10,1,0,8,0,20,1,0],
+                "Closed":[1,6,1,12,21,3,5,1,7,2,13,1],
+                "error": 13
+            }
+
+### Retrieve Results [POST]
++ Response 200
+
+    [Retrieve Results][]
+
+# Group Drilldown
+
+## Retrieve Drilldown [/rest/api/drilldown]
+Data for the drilldown component
+
++ Request JSON Message
+
+    + Headers
+
+            Accept: application/json
+
+    + Body
+    
+            {
+                "audit": ["ABS","AUTHORITY","CUSTOMER","INTERNAL"],
+                "admin": ["SJK","EDE","TTE","ÉVORA","EGM","GPX","BOT","MLB","JAX","SUPPLIER","WAREHOUSE","MRO"],
+                "teams": ["Quality - Auditoria da Qualidade"],
+                "year": [2019]
+            }
+
++ Model (application/json)
+
+    Options for the "OptionsBox" component
+
+    + Headers
+
+
+    + Body
+
+            [
+                {
+                    "assignee": "Vader",
+                    "type": "Sith",
+                    "summary": "Come to the dark side",
+                    "date": 18-11-1977,
+                    "sprint": "Force Sprint"
+                },
+            ]
+
+### Retrieve Drilldown [POST]
++ Response 200
+
+    [Retrieve Drilldown][]
+
+# Group Update
+
+## Update [/rest/api/update/{year}]
+Updates SGA's data for a certain year
+
++ Parameters
+
+    + year (integer) - Year to be updated
+
+### Update [PUT]
++ Response 200
+
+# Group Login
+
+## Login [/rest/api/login]
+Authenticate user to update SGA's data for a certain year
+
++ Authentication
+
+    + Basic auth
+
+### Login [POST]
++ Response 200

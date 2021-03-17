@@ -1,0 +1,1 @@
+aglio --theme-style blueprint --theme-variables blueprint --theme-full-width -i api_doc.apib -o doc.html
